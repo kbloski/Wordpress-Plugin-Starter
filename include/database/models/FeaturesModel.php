@@ -25,7 +25,7 @@ class FeaturesModel
     {
         global $wpdb;
         $table_name = TableNameHelper::get_feature_table_name();
-        $sql = "DROP TABLE $table_name";
+        $sql = "DROP TABLE IF EXISTS $table_name";
         $wpdb->query($sql);
     }
 }

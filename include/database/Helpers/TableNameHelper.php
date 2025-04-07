@@ -12,7 +12,6 @@ class TableNameHelper
 
     public static function get_feature_table_name()
     {
-        error_log( self::create_table_name('features') );
         return self::create_table_name('features');
     }
 }

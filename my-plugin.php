@@ -14,4 +14,4 @@ require_once(plugin_dir_path(__FILE__) . 'vendor/autoload.php');
 // // Hook aktywacji
 register_activation_hook(__FILE__, 'Inc\InitPlugin::activate_plugin');
 register_deactivation_hook(__FILE__, 'Inc\InitPlugin::deactivate_plugin');
-register_uninstall_hook(__FILE__, 'Inc\InitPlugin::uninstall_plugin');
+
