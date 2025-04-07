@@ -5,7 +5,7 @@ use Inc\Database\Helpers\TableNameHelper;
 
 class FeatureService extends AbstractService {
     public function __construct() {
-        parent::__construct(TableNameHelper::get_feature_table_name());  // Tabela 'features'
+        parent::__construct(TableNameHelper::get_feature_table_name());
     }
 
     public function get_feature_by_slug($slug) {

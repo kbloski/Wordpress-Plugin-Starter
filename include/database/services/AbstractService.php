@@ -9,7 +9,7 @@ abstract class AbstractService {
     public function __construct($table) {
         global $wpdb;
         $this->wpdb = $wpdb;
-        $this->table = $table;  // Prefiks tabeli WordPress
+        $this->table = $table; 
     }
 
     protected function map_placeholders(array $data): array {

@@ -5,12 +5,6 @@ namespace Inc;
 use Inc\Database\ModelsManager;
 use Inc\Database\Services\FeatureService;
 
-function installNotice()
-{
-    echo '<div class="notice notice-success"><p>Alguin Plugin Installed 👋✨</p></div>';
-}
-
-
 class InitPlugin
 {
     public static function activate_plugin()
