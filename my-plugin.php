@@ -11,10 +11,6 @@ use Inc\InitPlugin;
 
 if (!defined('ABSPATH')) exit;
 require_once(plugin_dir_path(__FILE__) . 'vendor/autoload.php');
-
-// Set global prefix for database tables
-global $wpdb;
-$wpdb->prefix = 'wp_alguin_';
 // // Hook aktywacji
 register_activation_hook(__FILE__, 'Inc\InitPlugin::activate_plugin');
 register_deactivation_hook(__FILE__, 'Inc\InitPlugin::deactivate_plugin');

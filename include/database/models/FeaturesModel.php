@@ -2,14 +2,13 @@
 
 namespace Inc\Database\Models;
 
+use Inc\Database\Helpers\TableNameHelper;
+
 class FeaturesModel 
 {
-    public static $table_prefix =  "features";
-
     public static function create_table()
     {
-        global $wpdb;
-        $table_name = $wpdb->prefix . self::$table_prefix;
+        $table_name = TableNameHelper::get_feature_table_name();
 
         $sql = "CREATE TABLE IF NOT EXISTS $table_name (
             id INT(11) AUTO_INCREMENT PRIMARY KEY,
@@ -25,10 +24,8 @@ class FeaturesModel
     public static function drop_table()
     {
         global $wpdb;
-        $table_name = $wpdb->prefix . self::$table_prefix;
-
+        $table_name = TableNameHelper::get_feature_table_name();
         $sql = "DROP TABLE $table_name";
-
         $wpdb->query($sql);
     }
 }
