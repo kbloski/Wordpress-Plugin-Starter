@@ -1,25 +1,21 @@
 <?php
 
 /**
- * Plugin Name: augin
- * Description: Minimal WordPress plugin using Composer autoload and namespace
+ * Plugin Name: Alguin Template 2025
+ * Description: WordPress plugin using Composer autoload and namespace
  * Version: 1.0.0
- * Author: Your Name
+ * Author: Kamil Błoński
  */
 
+use Inc\InitPlugin;
+
 if (!defined('ABSPATH')) exit;
+require_once(plugin_dir_path(__FILE__) . 'vendor/autoload.php');
 
-// Ładujemy autoloader Composera
-require_once(plugin_dir_path(__FILE__) . 'vendor/autoload.php'); // lub podobne
-
-
-
-use Src\Hello;
-
-function my_mini_plugin_boot()
-{
-    $hello = new Hello();
-    add_action('admin_notices', [$hello, 'showNotice']);
-}
-
-add_action('plugins_loaded', 'my_mini_plugin_boot');
+// Set global prefix for database tables
+global $wpdb;
+$wpdb->prefix = 'wp_alguin_';
+// // Hook aktywacji
+register_activation_hook(__FILE__, 'Inc\InitPlugin::activate_plugin');
+register_deactivation_hook(__FILE__, 'Inc\InitPlugin::deactivate_plugin');
+register_uninstall_hook(__FILE__, 'Inc\InitPlugin::uninstall_plugin');
