@@ -3,6 +3,7 @@
 namespace Inc;
 
 use Inc\Database\ModelsManager;
+use Inc\Database\Services\FeatureService;
 
 function installNotice()
 {
