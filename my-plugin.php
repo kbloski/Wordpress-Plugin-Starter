@@ -8,10 +8,12 @@
  */
 
 use Inc\InitPlugin;
+use Inc\Templates\ShortcodesManager;
 
 if (!defined('ABSPATH')) exit;
 require_once(plugin_dir_path(__FILE__) . 'vendor/autoload.php');
-// // Hook aktywacji
+
 register_activation_hook(__FILE__, 'Inc\InitPlugin::activate_plugin');
 register_deactivation_hook(__FILE__, 'Inc\InitPlugin::deactivate_plugin');
 
+InitPlugin::init();

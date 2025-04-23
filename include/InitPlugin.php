@@ -4,9 +4,15 @@ namespace Inc;
 
 use Inc\Database\ModelsManager;
 use Inc\Database\Services\FeatureService;
+use Inc\Templates\ShortcodesManager;
 
 class InitPlugin
 {
+    public static function init()
+    {
+        ShortcodesManager::init_shortcodes();
+    }
+
     public static function activate_plugin()
     {
         ModelsManager::init_models();
