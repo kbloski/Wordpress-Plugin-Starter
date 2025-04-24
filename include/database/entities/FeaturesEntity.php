@@ -1,10 +1,10 @@
 <?php 
 
-namespace Inc\Database\Models;
+namespace Inc\Database\Entities;
 
 use Inc\Database\Helpers\TableNameHelper;
 
-class FeaturesModel 
+class FeaturesEntity 
 {
     public static function create_table()
     {

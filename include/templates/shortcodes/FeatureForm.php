@@ -41,8 +41,6 @@ class FeatureForm {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if (true) {
                 if ($_POST["header"] && $_POST["description"]){
-                    echo $_POST['header']." ".$_POST['description'];
-
                     $featureService = new FeatureService();
 
                     try {
@@ -50,7 +48,6 @@ class FeatureForm {
                             "header" => $_POST['header'],
                             "description" => $_POST["description"]
                         ]);
-
                         
                     } catch (Exception $e) {
                         echo "Error: " . $e->getMessage();

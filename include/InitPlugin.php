@@ -2,7 +2,7 @@
 
 namespace Inc;
 
-use Inc\Database\ModelsManager;
+use Inc\Database\EntitiesManager;
 use Inc\Templates\ShortcodesManager;
 
 class InitPlugin
@@ -14,7 +14,7 @@ class InitPlugin
 
     public static function activate_plugin()
     {
-        ModelsManager::init_models();
+        EntitiesManager::init_models();
     }
 
     public static function deactivate_plugin()
@@ -23,7 +23,7 @@ class InitPlugin
 
     public static function uninstall_plugin()
     {
-        ModelsManager::destroy_models();
+        EntitiesManager::destroy_models();
     }
 
 }
