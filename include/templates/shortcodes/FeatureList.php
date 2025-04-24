@@ -11,11 +11,6 @@ class FeatureList {
     public static function render_shortcode($atts = [], $content = null) {
         $featureService = new FeatureService();
 
-        $featureService->create([
-            "header" => "Example header",
-            "description" => "Example Description"
-        ]);
-
         $records = $featureService->get_all();
 
         $atts = shortcode_atts([
@@ -34,7 +29,11 @@ class FeatureList {
             <div class="feature-list">
                 <?php 
                     foreach ($records as $record) {
-                        echo "<li>{$record->title}</li>"; 
+                        echo "<li>
+                            <span>{$record->header}</span>
+                            <span>{$record->description}</span>
+                            <hr />
+                        </li>"; 
                     }
                 ?>
             </div>
