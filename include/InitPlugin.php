@@ -3,7 +3,6 @@
 namespace Inc;
 
 use Inc\Database\ModelsManager;
-use Inc\Database\Services\FeatureService;
 use Inc\Templates\ShortcodesManager;
 
 class InitPlugin

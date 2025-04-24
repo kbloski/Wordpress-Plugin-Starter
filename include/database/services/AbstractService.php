@@ -32,20 +32,18 @@ abstract class AbstractService {
         return $inserted ? $this->wpdb->insert_id : false;
     }
 
-    public function get($id) {
+    public function get_by_id($id) {
         return $this->wpdb->get_row(
-            $this->wpdb->prepare("SELECT * FROM {$this->table} WHERE id = %d", $id),
-            ARRAY_A
+            $this->wpdb->prepare("SELECT * FROM {$this->table} WHERE id = %d", $id)
         );
     }
-
+    
     public function get_all($orderby = 'id', $order = 'DESC') {
         return $this->wpdb->get_results(
-            "SELECT * FROM {$this->table} ORDER BY {$orderby} {$order}",
-            ARRAY_A
+            "SELECT * FROM {$this->table} ORDER BY {$orderby} {$order}"
         );
     }
-
+    
     public function update($id, array $data) {
         $placeholders = $this->map_placeholders($data);
 
