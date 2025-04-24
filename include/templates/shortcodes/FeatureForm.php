@@ -49,6 +49,8 @@ class FeatureForm {
                             "description" => $_POST["description"]
                         ]);
                         
+                        // Redirect to current url with get method 
+                        wp_redirect($_SERVER['REQUEST_URI']);
                     } catch (Exception $e) {
                         echo "Error: " . $e->getMessage();
                     }
