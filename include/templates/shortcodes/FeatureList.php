@@ -21,6 +21,7 @@ class FeatureList {
         ob_start();
         ?>
         <div class="feature-box">
+            <?php self::delete_submit() ?>
             <div>
                 <h3 class="feature-title"><?php echo esc_html($atts['icon']); ?> <?php echo esc_html($atts['title']); ?></h3>
             </div>
@@ -32,6 +33,10 @@ class FeatureList {
                         echo "<li>
                             <span>{$record->header}</span>
                             <span>{$record->description}</span>
+                            <form method=\"POST\">
+                            <input hidden='false' name='el_id' value='$record->id' />
+                            <button type='submit'>DELETE</button>
+                            </form>
                             <hr />
                         </li>"; 
                     }
@@ -40,5 +45,18 @@ class FeatureList {
         </div>
         <?php
         return ob_get_clean();
+    }
+
+    public static function delete_submit()
+    {
+        $el_id = $_POST["el_id"];
+        if ($_SERVER["REQUEST_METHOD"] === "POST" && $el_id)
+        {
+            $featureService = new FeatureService();
+            $featureService->delete($el_id);
+
+            // Redirect to current url with get method 
+            wp_redirect($_SERVER['REQUEST_URI']);
+        }
     }
 }
