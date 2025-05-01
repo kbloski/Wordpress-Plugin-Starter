@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import style from "./App.module.scss";
 
 declare const pluginData: {
   ajaxUrl: string;
@@ -9,7 +8,7 @@ declare const pluginData: {
   [key: string]: any;
 };
 
-function App() {
+function Api() {
   const [fullname, setFullname] = useState("");
 
   useEffect(() => {
@@ -19,7 +18,7 @@ function App() {
   }, [])
 
   return (
-    <div className={style.App}>
+    <div>
       <div>
         Hello from react app
       </div>
@@ -34,4 +33,4 @@ function App() {
   )
 }
 
-export default App
+export default Api
