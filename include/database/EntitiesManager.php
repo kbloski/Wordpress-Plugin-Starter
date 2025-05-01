@@ -2,7 +2,7 @@
 
 namespace Inc\Database;
 
-use Inc\Database\Models\FeaturesEntity;
+use Inc\Database\Entities\FeaturesEntity;
 
 class EntitiesManager
 {
