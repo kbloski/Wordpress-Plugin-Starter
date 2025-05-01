@@ -2,7 +2,7 @@
 
 namespace Inc\Templates;
 
-class ReactShortcodes 
+class ShortcodesReact 
 {
     public static function Init()
     {

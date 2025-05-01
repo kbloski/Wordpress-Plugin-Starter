@@ -1,28 +1,28 @@
 <?php
 namespace Inc\Templates\Shortcodes;
 
-use Inc\Database\Services\FeatureService;
+use Inc\Database\Services\exampleService;
 
-class FeatureForm {
+class ExampleForm {
     public static function init_shortcode() {
-        add_shortcode('feature_form', [self::class, 'render_shortcode']);
+        add_shortcode('example-form', [self::class, 'render_shortcode']);
     }
 
     public static function render_shortcode($atts = [], $content = null) {
         $atts = shortcode_atts([
-            'title' => 'Feature Form Create',
+            'title' => 'Example Form Create',
             'icon' => '⭐',
-        ], $atts, 'feature_box');
+        ], $atts, 'example_box');
 
         self::post_submit();
 
         ob_start();
         ?>
-            <div class="feature-box">
+            <div class="example-box">
                 <div>
-                    <h3 class="feature-title"><?php echo esc_html($atts['icon']); ?> <?php echo esc_html($atts['title']); ?></h3>
+                    <h3 class="example-title"><?php echo esc_html($atts['icon']); ?> <?php echo esc_html($atts['title']); ?></h3>
                 </div>
-                <div class="feature-icon"></div>
+                <div class="example-icon"></div>
                 <form onsubmit="" action="" method="post">
                     <div>
                         Header: <input type="text" name="header" required />
@@ -41,10 +41,10 @@ class FeatureForm {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if (true) {
                 if ($_POST["header"] && $_POST["description"]){
-                    $featureService = new FeatureService();
+                    $exampleService = new exampleService();
 
                     try {
-                        $featureService->create([
+                        $exampleService->create([
                             "header" => $_POST['header'],
                             "description" => $_POST["description"]
                         ]);

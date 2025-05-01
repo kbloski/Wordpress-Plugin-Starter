@@ -2,17 +2,17 @@
 
 namespace Inc\Database;
 
-use Inc\Database\Entities\FeaturesEntity;
+use Inc\Database\Entities\ExampleEntity;
 
 class EntitiesManager
 {
     public static function init_models()
     {
-        FeaturesEntity::create_table();
+        ExampleEntity::create_table();
     }
 
     public static function destroy_models()
     {
-        FeaturesEntity::drop_table();
+        ExampleEntity::drop_table();
     }
 }

@@ -10,8 +10,8 @@ class TableNameHelper
         return $wpdb->prefix . 'alguin_' . $table_name;
     }
 
-    public static function get_feature_table_name()
+    public static function get_example_table_name()
     {
-        return self::create_table_name('features');
+        return self::create_table_name('example');
     }
 }

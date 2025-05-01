@@ -1,16 +1,16 @@
 <?php 
 namespace Inc\Templates;
 
-use Inc\Templates\Shortcodes\FeatureForm;
-use Inc\Templates\Shortcodes\FeatureList;
+use Inc\Templates\Shortcodes\ExampleForm;
+use Inc\Templates\Shortcodes\ExampleList;
 
 class ShortcodesManager
 {
     public static function init_shortcodes()
     {
-        ReactShortcodes::Init();
+        ShortcodesReact::Init();
         
-        FeatureList::init_shortcode();
-        FeatureForm::init_shortcode();
+        ExampleForm::init_shortcode();
+        ExampleList::init_shortcode();
     }
 }

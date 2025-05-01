@@ -9,6 +9,8 @@ class InitPlugin
 {
     public static function init()
     {
+        // Init React
+       
         ShortcodesManager::init_shortcodes();
     }
 

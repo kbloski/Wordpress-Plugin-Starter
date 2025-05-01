@@ -1,33 +1,33 @@
 <?php
 namespace Inc\Templates\Shortcodes;
 
-use Inc\Database\Services\FeatureService;
+use Inc\Database\Services\ExampleService;
 
-class FeatureList {
+class ExampleList {
     public static function init_shortcode() {
-        add_shortcode('feature_list', [self::class, 'render_shortcode']);
+        add_shortcode('example-list', [self::class, 'render_shortcode']);
     }
 
     public static function render_shortcode($atts = [], $content = null) {
-        $featureService = new FeatureService();
+        $exampleService = new ExampleService();
 
-        $records = $featureService->get_all();
+        $records = $exampleService->get_all();
 
         $atts = shortcode_atts([
-            'title' => 'Feature List',
+            'title' => 'Examples List',
             'icon' => '⭐',
-        ], $atts, 'feature_box');
+        ], $atts, 'example_box');
 
         ob_start();
         ?>
-        <div class="feature-box">
+        <div class="example-box">
             <?php self::delete_submit() ?>
             <div>
-                <h3 class="feature-title"><?php echo esc_html($atts['icon']); ?> <?php echo esc_html($atts['title']); ?></h3>
+                <h3 class="example-title"><?php echo esc_html($atts['icon']); ?> <?php echo esc_html($atts['title']); ?></h3>
             </div>
-            <div class="feature-icon"></div>
-            <div class="feature-content"><?php echo do_shortcode($content); ?></div>
-            <div class="feature-list">
+            <div class="example-icon"></div>
+            <div class="example-content"><?php echo do_shortcode($content); ?></div>
+            <div class="example-list">
                 <?php 
                     foreach ($records as $record) {
                         echo "<li>
@@ -52,8 +52,8 @@ class FeatureList {
         $el_id = $_POST["el_id"];
         if ($_SERVER["REQUEST_METHOD"] === "POST" && $el_id)
         {
-            $featureService = new FeatureService();
-            $featureService->delete($el_id);
+            $exampleService = new exampleService();
+            $exampleService->delete($el_id);
 
             // Redirect to current url with get method 
             wp_redirect($_SERVER['REQUEST_URI']);
