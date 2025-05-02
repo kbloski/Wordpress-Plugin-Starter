@@ -9,19 +9,19 @@ class ExampleRestApi
 {
     public static function init()
     {
-        add_action('rest_api_init', [self::class, 'register_routes']);
+        add_action('rest_api_init', [self::class, 'registerRoutes']);
     }
 
-    public static function register_routes()
+    public static function registerRoutes()
     {
         register_rest_route('alguin/v1', '/get-name', [
             'methods'             => 'GET',
-            'callback'            => [self::class, 'handle_get_name'],
+            'callback'            => [self::class, 'request'],
             'permission_callback' => '__return_true',                   // For all
         ]);
     }
 
-    public static function handle_get_name(WP_REST_Request $request)
+    public static function request(WP_REST_Request $request)
     {
         $name    = $request->get_param('name');
         $surname = $request->get_param('surname');

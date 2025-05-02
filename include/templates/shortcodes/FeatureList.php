@@ -1,33 +1,33 @@
 <?php
 namespace Inc\Templates\Shortcodes;
 
-use Inc\Database\Services\ExampleService;
+use Inc\Database\Services\FeatureService;
 
-class ExampleList {
-    public static function initShortcode() {
-        add_shortcode('example-list', [self::class, 'renderShortcode']);
+class FeatureList {
+    public static function init_shortcode() {
+        add_shortcode('feature_list', [self::class, 'render_shortcode']);
     }
 
-    public static function renderShortcode($atts = [], $content = null) {
-        $exampleService = new ExampleService();
+    public static function render_shortcode($atts = [], $content = null) {
+        $featureService = new FeatureService();
 
-        $records = $exampleService->get_all();
+        $records = $featureService->get_all();
 
         $atts = shortcode_atts([
-            'title' => 'Examples List',
+            'title' => 'Feature List',
             'icon' => '⭐',
-        ], $atts, 'example_box');
+        ], $atts, 'feature_box');
 
         ob_start();
         ?>
-        <div class="example-box">
-            <?php self::deleteSubmit() ?>
+        <div class="feature-box">
+            <?php self::delete_submit() ?>
             <div>
-                <h3 class="example-title"><?php echo esc_html($atts['icon']); ?> <?php echo esc_html($atts['title']); ?></h3>
+                <h3 class="feature-title"><?php echo esc_html($atts['icon']); ?> <?php echo esc_html($atts['title']); ?></h3>
             </div>
-            <div class="example-icon"></div>
-            <div class="example-content"><?php echo do_shortcode($content); ?></div>
-            <div class="example-list">
+            <div class="feature-icon"></div>
+            <div class="feature-content"><?php echo do_shortcode($content); ?></div>
+            <div class="feature-list">
                 <?php 
                     foreach ($records as $record) {
                         echo "<li>
@@ -47,13 +47,13 @@ class ExampleList {
         return ob_get_clean();
     }
 
-    public static function deleteSubmit()
+    public static function delete_submit()
     {
         $el_id = $_POST["el_id"];
         if ($_SERVER["REQUEST_METHOD"] === "POST" && $el_id)
         {
-            $exampleService = new exampleService();
-            $exampleService->delete($el_id);
+            $featureService = new FeatureService();
+            $featureService->delete($el_id);
 
             // Redirect to current url with get method 
             wp_redirect($_SERVER['REQUEST_URI']);

@@ -4,11 +4,11 @@ namespace Inc\Database\Entities;
 
 use Inc\Database\Helpers\TableNameHelper;
 
-class ExampleEntity 
+class FeaturesEntity 
 {
-    public static function createTable()
+    public static function create_table()
     {
-        $table_name = TableNameHelper::getExampleTableName();
+        $table_name = TableNameHelper::get_feature_table_name();
 
         $sql = "CREATE TABLE IF NOT EXISTS $table_name (
             id INT(11) AUTO_INCREMENT PRIMARY KEY,
@@ -21,10 +21,10 @@ class ExampleEntity
         dbDelta($sql);
     }
     
-    public static function dropTable()
+    public static function drop_table()
     {
         global $wpdb;
-        $table_name = TableNameHelper::getExampleTableName();
+        $table_name = TableNameHelper::get_feature_table_name();
         $sql = "DROP TABLE IF EXISTS $table_name";
         $wpdb->query($sql);
     }

@@ -1,28 +1,28 @@
 <?php
 namespace Inc\Templates\Shortcodes;
 
-use Inc\Database\Services\exampleService;
+use Inc\Database\Services\FeatureService;
 
-class ExampleForm {
-    public static function initShortcode() {
-        add_shortcode('example-form', [self::class, 'renderShortcode']);
+class FeatureForm {
+    public static function init_shortcode() {
+        add_shortcode('feature_form', [self::class, 'render_shortcode']);
     }
 
-    public static function renderShortcode($atts = [], $content = null) {
+    public static function render_shortcode($atts = [], $content = null) {
         $atts = shortcode_atts([
-            'title' => 'Example Form Create',
+            'title' => 'Feature Form Create',
             'icon' => '⭐',
-        ], $atts, 'example_box');
+        ], $atts, 'feature_box');
 
-        self::postSubmit();
+        self::post_submit();
 
         ob_start();
         ?>
-            <div class="example-box">
+            <div class="feature-box">
                 <div>
-                    <h3 class="example-title"><?php echo esc_html($atts['icon']); ?> <?php echo esc_html($atts['title']); ?></h3>
+                    <h3 class="feature-title"><?php echo esc_html($atts['icon']); ?> <?php echo esc_html($atts['title']); ?></h3>
                 </div>
-                <div class="example-icon"></div>
+                <div class="feature-icon"></div>
                 <form onsubmit="" action="" method="post">
                     <div>
                         Header: <input type="text" name="header" required />
@@ -37,14 +37,14 @@ class ExampleForm {
         return ob_get_clean();
     }
 
-    public static function postSubmit(){
+    public static function post_submit(){
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if (true) {
                 if ($_POST["header"] && $_POST["description"]){
-                    $exampleService = new exampleService();
+                    $featureService = new FeatureService();
 
                     try {
-                        $exampleService->create([
+                        $featureService->create([
                             "header" => $_POST['header'],
                             "description" => $_POST["description"]
                         ]);

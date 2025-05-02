@@ -8,7 +8,7 @@ if (!defined('WP_UNINSTALL_PLUGIN')) {
     exit;
 }
 
-InitPlugin::uninstall_plugin();
+InitPlugin::onUninstallPlugin();
 
 // delete_option('my_plugin_option_name');
 // delete_site_option('my_plugin_option_name');

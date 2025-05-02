@@ -6,13 +6,13 @@ use Inc\Database\Entities\ExampleEntity;
 
 class EntitiesManager
 {
-    public static function init_models()
+    public static function initEntities()
     {
-        ExampleEntity::create_table();
+        ExampleEntity::createTable();
     }
 
-    public static function destroy_models()
+    public static function destroyEntities()
     {
-        ExampleEntity::drop_table();
+        ExampleEntity::dropTable();
     }
 }

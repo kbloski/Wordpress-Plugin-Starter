@@ -9,14 +9,13 @@
 
 use Inc\InitPlugin;
 use Inc\Api\ApiManager;
-use Inc\Templates\ShortcodesManager;
-use Inc\Templates\Admin\AdminTemplate;
+use Inc\Templates\React\Admin\AdminTemplate;
 
 if (!defined('ABSPATH')) exit;
 require_once(plugin_dir_path(__FILE__) . 'vendor/autoload.php');
 
-register_activation_hook(__FILE__, 'Inc\InitPlugin::activate_plugin');
-register_deactivation_hook(__FILE__, 'Inc\InitPlugin::deactivate_plugin');
+register_activation_hook(__FILE__, 'Inc\InitPlugin::onActivatePlugin');
+register_deactivation_hook(__FILE__, 'Inc\InitPlugin::onDactivatePlugin');
 
 InitPlugin::init();
 ApiManager::init();

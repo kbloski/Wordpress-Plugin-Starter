@@ -9,23 +9,21 @@ class InitPlugin
 {
     public static function init()
     {
-        // Init React
-       
-        ShortcodesManager::init_shortcodes();
+        ShortcodesManager::init();
     }
 
-    public static function activate_plugin()
+    public static function onActivatePlugin()
     {
-        EntitiesManager::init_models();
+        EntitiesManager::initEntities();
     }
 
-    public static function deactivate_plugin()
+    public static function onDactivatePlugin()
     {
     }
 
-    public static function uninstall_plugin()
+    public static function onUninstallPlugin()
     {
-        EntitiesManager::destroy_models();
+        EntitiesManager::destroyEntities();
     }
 
 }

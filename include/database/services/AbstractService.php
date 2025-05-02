@@ -32,13 +32,13 @@ abstract class AbstractService {
         return $inserted ? $this->wpdb->insert_id : false;
     }
 
-    public function get_by_id($id) {
+    public function getById($id) {
         return $this->wpdb->get_row(
             $this->wpdb->prepare("SELECT * FROM {$this->table} WHERE id = %d", $id)
         );
     }
     
-    public function get_all($orderby = 'id', $order = 'DESC') {
+    public function getAll($orderby = 'id', $order = 'DESC') {
         return $this->wpdb->get_results(
             "SELECT * FROM {$this->table} ORDER BY {$orderby} {$order}"
         );
