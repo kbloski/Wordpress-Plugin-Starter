@@ -7,18 +7,19 @@
  * Author: Kamil Błoński
  */
 
-use Inc\InitPlugin;
-use Inc\ScriptsManager;
-use Inc\Api\ApiManager;
 use Inc\Templates\React\Admin\AdminTemplate;
+use Inc\Api\ApiManager;
+use Inc\PluginManager;
+use Inc\ScriptsManager;
+use Inc\Templates\ShortcodesManager;
 
 if (!defined('ABSPATH')) exit;
 require_once(plugin_dir_path(__FILE__) . 'vendor/autoload.php');
 
-register_activation_hook(__FILE__, 'Inc\InitPlugin::onActivatePlugin');
-register_deactivation_hook(__FILE__, 'Inc\InitPlugin::onDactivatePlugin');
+register_activation_hook(__FILE__, 'Inc\PluginManager::onActivatePlugin');
+register_deactivation_hook(__FILE__, 'Inc\PluginManager::onDactivatePlugin');
 
-InitPlugin::init();
-ApiManager::init();
 AdminTemplate::init();
+ApiManager::init();
 ScriptsManager::init();
+ShortcodesManager::init();

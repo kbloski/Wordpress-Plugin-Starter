@@ -30,13 +30,13 @@ class ExampleList {
 
         </style>
 
-        <div class="example-box">
+        <div>
             <?php self::deleteSubmit() ?>
             <div>
-                <h3 class="example-title"><?php echo esc_html($atts['icon']); ?> <?php echo esc_html($atts['title']); ?></h3>
+                <h3><?php echo esc_html($atts['icon']); ?> <?php echo esc_html($atts['title']); ?></h3>
             </div>
-            <div class="example-icon"></div>
-            <div class="example-content"><?php echo do_shortcode($content); ?></div>
+            <div></div>
+            <div><?php echo do_shortcode($content); ?></div>
             <div class="example-list">
                 <?php 
                     foreach ($records as $record) {
