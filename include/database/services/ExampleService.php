@@ -5,6 +5,6 @@ use Inc\Database\Helpers\TableNameHelper;
 
 class ExampleService extends AbstractService {
     public function __construct() {
-        parent::__construct(TableNameHelper::get_example_table_name());
+        parent::__construct(TableNameHelper::getExampleTableName());
     }
 }

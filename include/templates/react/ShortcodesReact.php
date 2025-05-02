@@ -2,15 +2,17 @@
 
 namespace Inc\Templates\React;
 
+use Inc\Templates\Helpers\HtmlElementCreator;
+
 class ShortcodesReact 
 {
     public static function init()
     {
-        // add_shortcode("example_react_shortcode", [self::class, "example_react_shortcode"]);
+        add_shortcode("test-react-block", [self::class, "testReactShortcode"]);
     }
 
-    // public static function example_react_shortcode()
-    // {
-    //     return HtmlElementCreator::createReactDiv("example-ract-shortcode")
-    // }
+    public static function testReactShortcode()
+    {
+        return HtmlElementCreator::createReactDiv("test-react-block");
+    }
 }

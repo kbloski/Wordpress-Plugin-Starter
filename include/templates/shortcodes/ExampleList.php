@@ -11,7 +11,7 @@ class ExampleList {
     public static function renderShortcode($atts = [], $content = null) {
         $exampleService = new ExampleService();
 
-        $records = $exampleService->get_all();
+        $records = $exampleService->getAll();
 
         $atts = shortcode_atts([
             'title' => 'Examples List',
@@ -30,15 +30,17 @@ class ExampleList {
             <div class="example-list">
                 <?php 
                     foreach ($records as $record) {
-                        echo "<li>
-                            <span>{$record->header}</span>
-                            <span>{$record->description}</span>
-                            <form method=\"POST\">
-                            <input hidden='false' name='el_id' value='$record->id' />
-                            <button type='submit'>DELETE</button>
-                            </form>
-                            <hr />
-                        </li>"; 
+                        ?>
+                            <li>
+                                <span>{$record->header}</span>
+                                <span>{$record->description}</span>
+                                <form method="POST">
+                                <input hidden='false' name='el_id' value='$record->id' />
+                                <button type='submit'>DELETE</button>
+                                </form>
+                                <hr />
+                            </li>
+                        <?php
                     }
                 ?>
             </div>
@@ -49,7 +51,7 @@ class ExampleList {
 
     public static function deleteSubmit()
     {
-        $el_id = $_POST["el_id"];
+        $el_id = $_POST["el_id"] ?? null;
         if ($_SERVER["REQUEST_METHOD"] === "POST" && $el_id)
         {
             $exampleService = new exampleService();
