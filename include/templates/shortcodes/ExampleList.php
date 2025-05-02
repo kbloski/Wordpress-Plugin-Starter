@@ -20,6 +20,16 @@ class ExampleList {
 
         ob_start();
         ?>
+
+        <style>
+            .example-list li {
+                display: flex;
+                justify-content: space-between;
+                border-bottom: 2px solid black;
+            }
+
+        </style>
+
         <div class="example-box">
             <?php self::deleteSubmit() ?>
             <div>
@@ -32,13 +42,12 @@ class ExampleList {
                     foreach ($records as $record) {
                         ?>
                             <li>
-                                <span>{$record->header}</span>
-                                <span>{$record->description}</span>
+                                <span><?php echo $record->header; ?></span>
+                                <span><?php echo $record->description; ?></span>
                                 <form method="POST">
-                                <input hidden='false' name='el_id' value='$record->id' />
+                                <input hidden='false' name='el_id' value="<?php echo $record->id; ?>" />
                                 <button type='submit'>DELETE</button>
                                 </form>
-                                <hr />
                             </li>
                         <?php
                     }
