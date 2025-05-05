@@ -1,4 +1,5 @@
-// import style from "./Documentation.module.scss"
+import style from "./Documentation.module.scss"
+
 import { shortcodes as reactShortcodes } from "../../../Shared/pageRegistry"
 
 function Documentation() {
@@ -18,17 +19,21 @@ function Documentation() {
           }
         </ul>
         <h3>React Shortcodes</h3>
-        <table>
+        <table className={style.reactTable}>
           <tr>
             <th>Shorcode</th><th>Implemented</th><th>React Component</th>
           </tr>
-          { !reactShortcodes.length ? "Empty array" : reactShortcodes.map( rootEl => <li key={rootEl.dataReactId}>
-            { rootEl.isImplemented 
-                ? <span><i className="pi pi-check-circle"/>Implemented</span> 
-                : <span><i className="pi pi-times-circle"/>Not implemented</span> 
-            }
-            <span>[{rootEl.dataReactId}]</span>
-          </li>)}
+          { !reactShortcodes.length ? "Empty array" : reactShortcodes.map( rootEl => <tr key={rootEl.dataReactId}>
+            <td>[{rootEl.dataReactId}]</td>
+            <td><i className="pi pi-check-circle"/></td>
+            <td>
+              { rootEl.isImplemented 
+                  ? <i className="pi pi-check-circle"/>
+                  : <i className="pi pi-times-circle"/>
+              }
+            </td>
+            
+          </tr>)}
         </table>
     </div>
   )

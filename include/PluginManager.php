@@ -4,7 +4,7 @@ namespace Inc;
 
 use Inc\Database\EntitiesManager;
 
-class InitPlugin
+class PluginManager
 {
     public static function onActivatePlugin()
     {
