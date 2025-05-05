@@ -23,6 +23,7 @@ class ShortcodesReact
     public static function init()
     {
         self::addReactShortcode("hello-react");
+        self::addReactShortcode("hello-react-2");
     }
 
     public static function getShortcodesList()
