@@ -6,8 +6,6 @@ class ShortcodesManager
     /** @var string[] */
     private static array $shortcodesList = [];
 
-    
-    
     public static function init()
     {
         ExampleForm::initShortcode();
