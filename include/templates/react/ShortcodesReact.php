@@ -6,13 +6,29 @@ use Inc\Templates\Helpers\HtmlElementCreator;
 
 class ShortcodesReact 
 {
-    public static function init()
+    /** @var string[] */
+    private static array $shortcodesList = [];
+
+    private static function addReactShortcode( string $shortcodeName ) : void
     {
-        add_shortcode("test-react-block", [self::class, "testReactShortcode"]);
+        self::$shortcodesList[] = $shortcodeName;
+
+        add_shortcode($shortcodeName, function() use ($shortcodeName) {
+            return HtmlElementCreator::createDivWithReactId($shortcodeName);
+        });
     }
 
-    public static function testReactShortcode()
+
+
+    public static function init()
     {
-        return HtmlElementCreator::createReactDiv("test-react-block");
+        self::addReactShortcode("hello-react");
+        self::addReactShortcode("hello-react-2");
+        self::addReactShortcode("hello-react-3");
+    }
+
+    public static function getShortcodesList()
+    {
+        return self::$shortcodesList;
     }
 }

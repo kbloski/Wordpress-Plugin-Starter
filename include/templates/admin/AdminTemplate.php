@@ -1,6 +1,6 @@
 <?php 
 
-namespace Inc\Templates\React\Admin;
+namespace Inc\Templates\Admin;
 
 use Inc\Templates\Helpers\HtmlElementCreator;
 
@@ -73,21 +73,21 @@ class AdminTemplate
 
     public static function renderHomePage()
     {
-        echo HtmlElementCreator::createReactDiv("admin-home-page");
+        echo HtmlElementCreator::createDivWithReactId("admin-home-page");
     }
 
     public static function renderSettingsPage()
     {
-        echo HtmlElementCreator::createReactDiv("admin-settings-page");
+        echo HtmlElementCreator::createDivWithReactId("admin-settings-page");
     }
 
     public static function renderApiPage()
     {
-        echo HtmlElementCreator::createReactDiv("admin-api-page");
+        echo HtmlElementCreator::createDivWithReactId("admin-api-page");
     }
 
     public static function renderDocumentationPage()
     {
-        echo HtmlElementCreator::createReactDiv("admin-documentation-page");
+        echo HtmlElementCreator::createDivWithReactId("admin-documentation-page");
     }
 }

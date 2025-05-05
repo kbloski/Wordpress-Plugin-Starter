@@ -3,41 +3,38 @@
 namespace Inc;
 
 use Inc\Api\ApiManager;
+use Inc\Templates\React\ShortcodesReact;
+use Inc\Templates\Shortcodes\ShortcodesManager;
 
 class ScriptsManager 
 {
     public static function init()
     {
-        // Dodaj hooki do ładowania skryptów
-        add_action('wp_enqueue_scripts', [self::class, 'enqueue_shared_react_script']);
+        // Hooks for loading scripts for wp-admin pages
         add_action('admin_enqueue_scripts', [self::class, 'enqueue_shared_react_script']);
+
+        // Hooks for loading scripts for wordpress pages
+        add_action('wp_enqueue_scripts', [self::class, 'enqueue_shared_react_script']);
     }
 
     public static function enqueue_shared_react_script()
     {
         $asset_path = plugin_dir_url(dirname(__FILE__)) . 'build/';
         
-        wp_enqueue_script(
-            'handleReactApp',
-            $asset_path . 'src/index.js',
-            [], 
-            null,
-            true
-        );
+        wp_enqueue_script( 'handleReactApp', $asset_path . 'src/index.js', [], null, true );
+        // wp_enqueue_style( 'my-plugin-style', $asset_path . 'src/index.css', [], null );
 
-        // Opcjonalnie — dołącz CSS, jeśli potrzebny
-        wp_enqueue_style(
-            'my-plugin-style',
-            $asset_path . 'src/index.css',
-            [],
-            null
-        );
-
-        // Provide data to scripta
+        // Provide data to script
         wp_localize_script(
-            'handleReactApp',   // script handler
-            'pluginData',       // variable name
+            'handleReactApp',   // Script handler
+            'pluginData',       // Provided variable name
             [
+                "admin" => [
+                    "shortcodes" => [
+                        "php" => ShortcodesManager::getShortcodesList(),
+                        "react" => ShortcodesReact::getShortcodesList(),
+                    ]
+                ],
                 'api' => [
                     // 'ajaxUrl'      => admin_url('admin-ajax.php'),
                     'restBaseUrl'  => esc_url_raw(rest_url()),

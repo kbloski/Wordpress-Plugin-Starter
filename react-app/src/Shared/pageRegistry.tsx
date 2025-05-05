@@ -1,26 +1,24 @@
 import { 
-    Test,
     AdminHome, 
     AdminSettings,
     AdminApiTest,
-    AdminDocumentation
+    AdminDocumentation,
+    HelloReact,
+    NotImplement
 } from '../Components';
 
 interface RootElementInterface {
   dataReactId: string;
   element: React.ReactNode;
+  isImplemented?: boolean
 }
 
 /**
  * When adding a new RootElement (React component),
  * make sure to also create its corresponding shortcode in the file:
  * 
- * include/templates/react/ShortcodesReact.php 
- * 
- * Full path: C:\xampp\htdocs\wp-content\plugins\alguin-wordpress-plugin-template\include\templates\react\ShortcodesReact.php
+ * _plug_dir_/include/templates/react/ShortcodesReact.php 
  */
-
-
 
 const pageBlock : RootElementInterface[] =[
   { dataReactId: "admin-settings-page", element: <AdminSettings />},
@@ -29,8 +27,23 @@ const pageBlock : RootElementInterface[] =[
   { dataReactId: "admin-documentation-page", element: <AdminDocumentation />},
 ] 
 
-export const shortcodes :  RootElementInterface[] = [
-  { dataReactId: "test-react-block", element: <Test />},
-]
+const shortcodes :  RootElementInterface[] = 
+  pluginData.admin.shortcodes.react.map( reactId => {
+    const rootElement : RootElementInterface= { 
+      dataReactId: reactId,
+      element: <NotImplement />
+    }
+
+    switch(reactId){
+      case "hello-react":
+        rootElement.element = <HelloReact />
+        rootElement.isImplemented = true;
+        break;
+    }
+
+    return rootElement;
+});
+
+export { shortcodes };
 
 export default [...pageBlock, ...shortcodes];

@@ -4,8 +4,10 @@ namespace Inc\Templates\Shortcodes;
 use Inc\Database\Services\exampleService;
 
 class ExampleForm {
+    public const SHORTCODE_NAME = "example-form";
+
     public static function initShortcode() {
-        add_shortcode('example-form', [self::class, 'renderShortcode']);
+        add_shortcode(self::SHORTCODE_NAME, [self::class, 'renderShortcode']);
     }
 
     public static function renderShortcode($atts = [], $content = null) {

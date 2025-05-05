@@ -1,21 +1,24 @@
-import { shortcodes } from "../../../Shared/pageRegistry"
-import style from "./Documentation.module.scss"
+// import style from "./Documentation.module.scss"
+import { shortcodes as reactShortcodes } from "../../../Shared/pageRegistry"
 
 function Documentation() {
+  const phpShortcodes = pluginData.admin.shortcodes.php;
 
   return (
      <div>
         <h1>Documentation</h1>
         <hr />
-        <h2>Your ShortCodes</h2>
-        { !shortcodes.length ? <span>You don't have shortcodes yet.</span> : 
-        <ul className={style.shortcodeList}>
-          <li>
-            [{ shortcodes.map( el => el.dataReactId)}]
-            <span><a aria-disabled className={style.copy}>Copy</a></span>
-          </li>
+        <h3>Php Shortcodes</h3>
+        <ul>
+          { !phpShortcodes.length ? "Empty array" : phpShortcodes.map( shortcode => <li>[{shortcode}]</li>)}
         </ul>
-        }
+        <h3>React Shortcodes</h3>
+        <ul>
+          { !reactShortcodes.length ? "Empty array" : reactShortcodes.map( rootEl => <li>
+            <span>[{rootEl.dataReactId}]</span>
+            <span>{ rootEl.isImplemented ? "Is implemented" : "Not implemented yet"}</span>
+          </li>)}
+        </ul>
         
     </div>
   )

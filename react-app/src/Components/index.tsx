@@ -1,3 +1,3 @@
-export { default as Test } from './Test';
+export * from "./Errors";
 export * from "./Admin";
 export * from "./Shortcodes";
