@@ -13,6 +13,17 @@ class AdminTemplate
         return self::SLUG_PREFIX.$slug;
     }
 
+    private static function checkMenuPositions(){
+        global $menu;
+        echo '<script>console.log(' . json_encode($menu) . ');</script>';
+    }
+
+    private static function doAdminPageAction(){
+        wp_dequeue_script('svg-painter');
+        wp_deregister_script('svg-painter');
+        do_action("plug-admin-page");
+    }
+
     public static function init()
     {
 
@@ -73,28 +84,31 @@ class AdminTemplate
         });
     }
 
-    private static function checkMenuPositions(){
-        global $menu;
-        echo '<script>console.log(' . json_encode($menu) . ');</script>';
-    }
+
+
+
 
     public static function renderHomePage()
     {
+        self::doAdminPageAction();
         echo HtmlElementCreator::createDivWithReactId("admin-home-page");
     }
 
     public static function renderSettingsPage()
     {
+        self::doAdminPageAction();
         echo HtmlElementCreator::createDivWithReactId("admin-settings-page");
     }
 
     public static function renderApiPage()
     {
+        self::doAdminPageAction();
         echo HtmlElementCreator::createDivWithReactId("admin-api-page");
     }
 
     public static function renderDocumentationPage()
     {
+        self::doAdminPageAction();
         echo HtmlElementCreator::createDivWithReactId("admin-documentation-page");
     }
 }
