@@ -21,6 +21,10 @@ class ScriptsManager
     {
         $asset_path = plugin_dir_url(dirname(__FILE__)) . 'build/';
         
+        // Fix error for react app
+        wp_dequeue_script('svg-painter');
+        wp_deregister_script('svg-painter');
+
         wp_enqueue_script( 'handleReactApp', $asset_path . 'src/index.js', [], null, true );
         wp_enqueue_style( 'handleReactAppStyles', $asset_path . 'src/index.css', [], null );
 
