@@ -18,12 +18,10 @@ class ShortcodesReact
         });
     }
 
-
-
     public static function init()
     {
         self::addReactShortcode("hello-react");
-        self::addReactShortcode("hello-react-2");
+        self::addReactShortcode("shortcode-without-component");
     }
 
     public static function getShortcodesList()
