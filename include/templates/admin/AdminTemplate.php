@@ -6,13 +6,20 @@ use Inc\Templates\Helpers\HtmlElementCreator;
 
 class AdminTemplate
 {
+    private const SLUG_PREFIX = "alguin-";
+    
+    private static function createSlug( string $slug )
+    {
+        return self::SLUG_PREFIX.$slug;
+    }
+
     public static function init()
     {
 
         add_action('admin_menu', function () 
         {
-            $slugPrefix = "alguin";
-            $mainPageSlug = "$slugPrefix-template";
+            $mainPageSlug = self::createSlug("template"); // lub użyj static::SLUG_PREFIX, jeśli chcesz zachować późniejsze dziedziczenie
+
 
             // Title
             add_menu_page(
@@ -41,7 +48,7 @@ class AdminTemplate
                 'Settings',
                 'Settings',
                 'manage_options',
-                "$slugPrefix-settings",           //  Slug page
+                self::createSlug("settings"),           //  Slug page
                 [self::class, "renderSettingsPage"]
             );
 
@@ -50,7 +57,7 @@ class AdminTemplate
                 'Test Api',
                 'Test Api',
                 'manage_options',
-                "$slugPrefix-api",                //  Slug page
+                self::createSlug("api"),                //  Slug page
                 [self::class, "renderApiPage"]
             );
 
@@ -59,7 +66,7 @@ class AdminTemplate
                 'Documentation',
                 'Documentation',
                 'manage_options',
-                "$slugPrefix-documentation",                //  Slug page
+                self::createSlug("documentation"),                //  Slug page
                 [self::class, "renderDocumentationPage"]
             );
     
