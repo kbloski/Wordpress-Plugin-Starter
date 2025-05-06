@@ -20,7 +20,7 @@ class ApiManager
     public static function getClientApiEndpoints(): array
     {
         return [
-            'getName' => ExampleRestApi::getFullUrl(),
+            'example' => ExampleRestApi::getFullUrl(),
         ];
     }
 

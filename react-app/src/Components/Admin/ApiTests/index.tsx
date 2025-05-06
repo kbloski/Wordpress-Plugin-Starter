@@ -1,19 +1,19 @@
 import { useEffect, useState } from "react";
 
 function Api() {
-  const [fullname, setFullname] = useState("");
+  const [data, setData] = useState("");
 
   useEffect(() => {
-    fetch(pluginData.api.endpoints.getName + `?name=Kamil&surname=Blonski`)
+    fetch(pluginData.api.endpoints.example + `?header=Kamil&description=Blonski`)
     .then( res => res.json())
-    .then( data => setFullname(`${data.name} ${data.surname}`))
+    .then( data => setData(JSON.stringify(data)))
   }, [])
 
   return (
     <div>
       <h1>Test Api</h1>
       <hr />
-      <div>Rest full name: { fullname }.</div>
+      <div>Rest full data: { data }.</div>
     </div>
   )
 }
