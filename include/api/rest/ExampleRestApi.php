@@ -9,63 +9,84 @@ use Inc\Api\ApiManager;
 class ExampleRestApi
 {
     /**
-     * Namespace API v1.
-     *
-     * @var string
+     * Endpoint route name (relative path).
      */
+    private const ROUTE_NAME = '/example';
 
     /**
-     * Init REST API.
+     * Hook to WordPress to register routes.
      */
-    public static function init()
+    public static function init(): void
     {
-        add_action('rest_api_init', [self::class, 'registerRoutes']);
+        add_action('rest_api_init', [static::class, 'registerRoutes']);
     }
 
     /**
-     * Register route REST API.
+     * Get the full URL to this endpoint.
      */
-    public static function registerRoutes()
+    public static function getFullUrl(): string
     {
-        register_rest_route(ApiManager::getV1NamespaceApi(), '/get-name', [
+        return rest_url(ApiManager::getV1NamespaceApi() . self::ROUTE_NAME);
+    }
+
+    /**
+     * Register this route in WordPress REST API.
+     */
+    public static function registerRoutes(): void
+    {
+        register_rest_route(ApiManager::getV1NamespaceApi(), self::ROUTE_NAME, [
             'methods'             => 'GET',
-            'callback'            => [self::class, 'request'],
-            'permission_callback' => '__return_true'
+            'callback'            => [static::class, 'handleGet'],
+            'permission_callback' => '__return_true',
+        ]);
+
+        register_rest_route(ApiManager::getV1NamespaceApi(), self::ROUTE_NAME, [
+            'methods'             => 'POST',
+            'callback'            => [static::class, 'handlePost'],
+            'permission_callback' => '__return_true',
         ]);
     }
 
     /**
-     * Obsługuje zapytanie do /get-name.
-     *
-     * @param WP_REST_Request $request
-     * @return WP_REST_Response
+     * Handle GET request to this endpoint.
      */
-    public static function request(WP_REST_Request $request)
+    public static function handleGet(WP_REST_Request $request): WP_REST_Response
     {
-        $name    = $request->get_param('name');
-        $surname = $request->get_param('surname');
+        $header = $request->get_param('header');
+        $description = $request->get_param('description');
+    
+        if (empty($header) || empty($description)) {
+            return new WP_REST_Response([
+                'error' => "Missing parameters.",
+                'message' => "Both header and description are required.",
+            ], 400);
+        }
+    
+        return new WP_REST_Response([
+            'header' => $header,
+            'description' => $description,
+            'message' => 'Data received successfully!'
+        ], 200);
+    }
+    
 
-        if (empty($name) || empty($surname)) {
+    /**
+     * Handle POST request to this endpoint.
+     */
+    public static function handlePost(WP_REST_Request $request): WP_REST_Response
+    {
+        $body = $request->get_json_params();
+
+        if (empty($body)) {
             return new WP_REST_Response([
                 'error'   => 'Missing parameters.',
-                'message' => 'Name and surname parameters are required.'
-            ], 400); 
+                'message' => 'Body json parameters are required.'
+            ], 400);
         }
 
         return new WP_REST_Response([
-            'name'    => $name,
-            'surname' => $surname,
+            'body' => $body,
             'message' => 'Data received successfully!'
-        ], 200); 
-    }
-
-    /**
-     * Return full endpoion url.
-     *
-     * @return string
-     */
-    public static function getFullUrl() : string
-    {
-        return rest_url(ApiManager::getV1NamespaceApi() . '/get-name');
+        ], 200);
     }
 }
