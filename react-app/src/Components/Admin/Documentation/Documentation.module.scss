@@ -1,5 +1,14 @@
-.reactTable {
-    // border: 2px solid black;
+@use "@shared/styles" as *;
+
+.phpShortcodesList {
+    li {
+        i {
+            margin-right: .5rem;
+        }
+    }
+}
+
+.reactShortcodesTable {
     border-collapse: collapse;
     
     th, td {

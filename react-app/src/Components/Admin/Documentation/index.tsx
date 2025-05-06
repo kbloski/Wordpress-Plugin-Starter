@@ -10,7 +10,7 @@ function Documentation() {
         <h1>Documentation</h1>
         <hr />
         <h3>Php Shortcodes</h3>
-        <ul>
+        <ul className={style.phpShortcodesList}>
           { !phpShortcodes.length ? "Empty array" : phpShortcodes.map( shortcode => 
             <li key={shortcode}>
               <i className="pi pi-check-circle" />
@@ -19,7 +19,7 @@ function Documentation() {
           }
         </ul>
         <h3>React Shortcodes</h3>
-        <table className={style.reactTable}>
+        <table className={style.reactShortcodesTable}>
           <tr>
             <th>Shorcode</th><th>Implemented</th><th>React Component</th>
           </tr>
