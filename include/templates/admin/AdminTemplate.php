@@ -19,8 +19,10 @@ class AdminTemplate
     }
 
     private static function doAdminPageAction(){
+        // Dislable script fix react app errors
         wp_dequeue_script('svg-painter');
         wp_deregister_script('svg-painter');
+
         do_action("plug-admin-page");
     }
 
