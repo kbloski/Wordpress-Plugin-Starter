@@ -25,3 +25,4 @@ ShortcodesReact::init();
 ApiManager::init();
 ScriptsManager::init();
 ShortcodesManager::init();
+

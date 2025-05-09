@@ -8,6 +8,10 @@ class ShortcodesManager
 
     public static function init()
     {
+
+        BlogList::initShortcode();
+        self::$shortcodesList[] = BlogList::SHORTCODE_NAME;
+
         ExampleForm::initShortcode();
         self::$shortcodesList[] = ExampleForm::SHORTCODE_NAME;
 
