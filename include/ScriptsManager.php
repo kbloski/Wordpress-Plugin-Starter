@@ -13,7 +13,7 @@ class ScriptsManager
     {
         
         // Hooks for loading scripts for wp-admin pages
-        AdminPageHook::addAction([self::class, 'enqueue_shared_react_script']);
+        // AdminPageHook::addAction([self::class, 'enqueue_shared_react_script']);
 
         // Hooks for loading scripts for wordpress pages
         add_action('wp_enqueue_scripts', [self::class, 'enqueue_shared_react_script']);

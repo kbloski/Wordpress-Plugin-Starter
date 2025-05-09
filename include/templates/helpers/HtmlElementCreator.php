@@ -17,15 +17,37 @@ class HtmlElementCreator
         ob_start(); ?>
 
         <script>
+            function fadeIn(element) {
+                if (!element) return;
+
+                let opacity = 0;
+                element.style.opacity = 0;
+
+                function animate() {
+                    opacity += 0.01;
+                    if (opacity >= 1) {
+                        element.style.opacity = 1;
+                        return;
+                    }
+                    element.style.opacity = opacity;
+                    requestAnimationFrame(animate);
+                }
+
+                requestAnimationFrame(animate);
+            }
+
+
             window.addEventListener('load', () => {
                 const loadContainerInfo = document.querySelector('[<?php echo self::DATA_LOAD_INFO; ?>="<?php echo $loadInfoId; ?>"]');
                 if (!loadContainerInfo) return; 
+
+                fadeIn(loadContainerInfo);
 
                 loadContainerInfo.innerHTML = '';
 
                 // Paragraph
                 const pInfo = document.createElement('p');
-                pInfo.innerText = "Oops! Something went wrong while loading the component. This component may not be implemented yet. Please try again later.";
+                pInfo.innerText = "Oops! Something went wrong while loading the component. This component may not be implemented yet. Please refresh side or try again later.";
                 loadContainerInfo.appendChild(pInfo);
 
                 // Button
