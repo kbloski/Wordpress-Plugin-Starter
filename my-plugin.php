@@ -4,7 +4,7 @@
  * Plugin Name: Alguin Template 2025
  * Description: WordPress plugin using Composer autoload wit namespaces and ReactApp
  * Version: 1.0.0
- * Author: Kamil Błoński
+ * Author: KKK
  */
 
 use Inc\Templates\Admin\AdminTemplate;

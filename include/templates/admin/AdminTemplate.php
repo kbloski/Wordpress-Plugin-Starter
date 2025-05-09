@@ -2,6 +2,7 @@
 
 namespace Inc\Templates\Admin;
 
+use Inc\Hooks\AdminPageHook;
 use Inc\Templates\Helpers\HtmlElementCreator;
 
 class AdminTemplate
@@ -16,14 +17,6 @@ class AdminTemplate
     private static function checkMenuPositions(){
         global $menu;
         echo '<script>console.log(' . json_encode($menu) . ');</script>';
-    }
-
-    private static function doAdminPageAction(){
-        // Dislable script fix react app errors
-        wp_dequeue_script('svg-painter');
-        wp_deregister_script('svg-painter');
-
-        do_action("plug-admin-page");
     }
 
     public static function init()
@@ -86,31 +79,27 @@ class AdminTemplate
         });
     }
 
-
-
-
-
     public static function renderHomePage()
     {
-        self::doAdminPageAction();
+        AdminPageHook::doAction();
         echo HtmlElementCreator::createDivWithReactId("admin-home-page");
     }
 
     public static function renderSettingsPage()
     {
-        self::doAdminPageAction();
+        AdminPageHook::doAction();
         echo HtmlElementCreator::createDivWithReactId("admin-settings-page");
     }
 
     public static function renderApiPage()
     {
-        self::doAdminPageAction();
+        AdminPageHook::doAction();
         echo HtmlElementCreator::createDivWithReactId("admin-api-page");
     }
 
     public static function renderDocumentationPage()
     {
-        self::doAdminPageAction();
+        AdminPageHook::doAction();
         echo HtmlElementCreator::createDivWithReactId("admin-documentation-page");
     }
 }

@@ -12,5 +12,3 @@ PluginManager::onUninstallPlugin();
 
 // delete_option('my_plugin_option_name');
 // delete_site_option('my_plugin_option_name');
-
-// register_uninstall_hook(__FILE__, 'Inc\PluginManager::uninstall_plugin');
