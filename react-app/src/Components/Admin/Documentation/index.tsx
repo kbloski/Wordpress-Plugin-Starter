@@ -1,6 +1,6 @@
 import style from "./Documentation.module.scss"
-
 import { shortcodes as reactShortcodes } from "../../../Shared/pageRegistry"
+import { Copy } from "../../"
 
 function Documentation() {
   const phpShortcodes = pluginData.admin.shortcodes.php;
@@ -15,6 +15,7 @@ function Documentation() {
             <li key={shortcode}>
               <i className="pi pi-check-circle" />
               <span>[{shortcode}]</span>
+              <Copy text={`[${shortcode}]`}/>
             </li>)
           }
         </ul>
@@ -30,7 +31,7 @@ function Documentation() {
             <th>React</th>
           </tr>
           { !reactShortcodes.length ? "Empty array" : reactShortcodes.map( rootEl => <tr key={rootEl.dataReactId}>
-            <td>[{rootEl.dataReactId}]</td>
+            <td>[{rootEl.dataReactId}] <Copy text={`[${rootEl.dataReactId}]`} /></td>
             <td><i className="pi pi-check-circle"/></td>
             <td>
               { rootEl.isImplemented 
