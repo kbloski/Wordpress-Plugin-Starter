@@ -26,16 +26,23 @@
 .reactShortcodesTable {
     border-collapse: collapse;
     
-    th, td {
-        text-align: center;
-        border: 1px solid black;
-        padding: .2rem .5rem;
-        border-width: 1px 2px 1px 2px;
-    }
-    
-    th {
-        background-color: whitesmoke;
-        border-width: 2px;
-    }
+    tr {
+        &:first-child {
+            th:first-child {
+                border: 0;
+            }
+        }
 
+        th, td {
+            text-align: center;
+            border: 1px solid black;
+            padding: .2rem .5rem;
+            border-width: 1px 2px 1px 2px;
+        }
+        
+        th {
+            background-color: whitesmoke;
+            border-width: 2px;
+        }
+    }
 }

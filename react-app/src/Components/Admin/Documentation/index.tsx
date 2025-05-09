@@ -20,8 +20,14 @@ function Documentation() {
         </ul>
         <h3>React Shortcodes</h3>
         <table className={style.reactShortcodesTable}>
+        <tr>
+            <th></th>
+            <th colSpan={2}>Implemented in</th>
+          </tr>
           <tr>
-            <th>Shorcode</th><th>Implemented</th><th>React Component</th>
+            <th>Shorcode</th>
+            <th>PHP</th>
+            <th>React</th>
           </tr>
           { !reactShortcodes.length ? "Empty array" : reactShortcodes.map( rootEl => <tr key={rootEl.dataReactId}>
             <td>[{rootEl.dataReactId}]</td>
