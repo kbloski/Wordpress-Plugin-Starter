@@ -39,7 +39,7 @@ class ExampleForm {
         return ob_get_clean();
     }
 
-    public static function postSubmit(){
+    private static function postSubmit(){
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if (true) {
                 if ($_POST["header"] && $_POST["description"]){

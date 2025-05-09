@@ -60,7 +60,7 @@ class ExampleList {
         return ob_get_clean();
     }
 
-    public static function deleteSubmit()
+    private static function deleteSubmit()
     {
         $el_id = $_POST["el_id"] ?? null;
         if ($_SERVER["REQUEST_METHOD"] === "POST" && $el_id)
