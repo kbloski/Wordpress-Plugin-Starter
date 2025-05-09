@@ -1,10 +1,25 @@
 @use "@shared/styles" as *;
 
 .phpShortcodesList {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+
     li {
         i {
             margin-right: .5rem;
         }
+    }
+
+    @media (width >= $md){
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    @media (width >= $lg){
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    @media (width >= $xl){
+        grid-template-columns: repeat(5, 1fr);
     }
 }
 
