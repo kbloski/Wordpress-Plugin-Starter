@@ -8,16 +8,19 @@ import store from "./store";
 
 import rootElementsList from './Shared/pageRegistry';
 
-rootElementsList.forEach( item => {
-  if (!item.element) return;
+window.addEventListener("load", () => {
 
-  const docElements = document.querySelectorAll(`[data-react-id="${item.dataReactId}"]`);
+  rootElementsList.forEach( item => {
+    if (!item.element) return;
   
-  docElements.forEach(el => {
-    createRoot(el).render(<StrictMode>
-        <Provider store={store}>
-          {item.element}
-        </Provider>
-      </StrictMode>)
+    const docElements = document.querySelectorAll(`[data-react-id="${item.dataReactId}"]`);
+    
+    docElements.forEach(el => {
+      createRoot(el).render(<StrictMode>
+          <Provider store={store}>
+            {item.element}
+          </Provider>
+        </StrictMode>)
+    })
   })
 })

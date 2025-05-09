@@ -21,8 +21,9 @@ class ScriptsManager
     {
         $asset_path = plugin_dir_url(dirname(__FILE__)) . 'build/';
         
-        wp_enqueue_script( 'handleReactApp', $asset_path . 'src/index.js', [], null, true );
-        wp_enqueue_style( 'handleReactAppStyles', $asset_path . 'src/index.css', [], null );
+        wp_enqueue_script( 'handleReactApp', $asset_path . 'src/main.js', [], null, true );
+        wp_enqueue_style( 'handleReactAppStyles', $asset_path . 'src/main.css', [], null );
+        
 
         // Provide data to script
         wp_localize_script(

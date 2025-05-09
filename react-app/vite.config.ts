@@ -14,10 +14,11 @@ export default defineConfig({
     outDir: '../build',
     emptyOutDir: true,
     rollupOptions: {
+      input: path.resolve(__dirname, 'src/main.tsx'), 
       output: {
-        // Stałe nazwy plików
-        entryFileNames: 'src/index.js',
-        chunkFileNames: 'src/index.js',
+        entryFileNames: 'src/main.js',
+        chunkFileNames: 'src/main.js',
+        // assetFileNames: 'src/[name][extname]',
         assetFileNames: 'src/[name][extname]',
       }
     }
