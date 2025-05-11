@@ -17,7 +17,7 @@ class ApiManager
      *
      * @return array<string, string>
      */
-    public static function getClientApiEndpoints(): array
+    public static function getClientPublicApiEndpoints(): array
     {
         return [
             'example' => ExampleRestApi::getFullUrl(),

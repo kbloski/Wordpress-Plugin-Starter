@@ -12,21 +12,23 @@ class Options {
         'client_secret' => '',
     ];
 
-    protected static array $optionKeys = [
+    protected static array $validOptionKeys = [
         'api_key',
         'client_secret',
     ];
+
+
 
     /**
      * Checks if the key is allowed.
      */
     private static function validateKey(string $key): void {
-        if (!in_array($key, self::$optionKeys, true)) {
-            throw new InvalidArgumentException("Option key '$key' is not allowed. Register it in optionKeys.");
+        if (!in_array($key, self::$validOptionKeys, true)) {
+            throw new InvalidArgumentException("Option key '$key' is not allowed. Register it in validOptionKeys.");
         }
     }
 
-    
+
 
     public static function getOptionName(): string 
     {

@@ -39,7 +39,7 @@ class ScriptsManager
                 'api' => [
                     // 'ajaxUrl'      => admin_url('admin-ajax.php'),
                     'restBaseUrl'  => esc_url_raw(rest_url()),
-                    'endpoints'    => ApiManager::getClientApiEndpoints(),
+                    'endpoints'    => ApiManager::getClientPublicApiEndpoints(),
                     // 'nonce'        => wp_create_nonce('my-plugin-nonce'),
                 ],
             ]
