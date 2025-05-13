@@ -1,0 +1,19 @@
+{
+    "name": "kamil/wp-plugin-starter",
+    "description": "A WordPress plugin template that simplifies the plugin development process.",
+    "type": "wordpress-plugin",
+    "license": "GPL-3.0",
+    "authors": [
+        {
+            "name": "Kamil Blonski",
+            "email": "kblonski02@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Inc\\": "include/"
+        }
+    }
+}
