@@ -1,16 +1,24 @@
 <?php 
 
 namespace Inc\Hooks;
+use Inc\Config\Config;
 
 class AdminPageHook
 {
-    private const HOOK_NAME = "plug-admin-page";
+    use Config;
 
-    public static function doAction(){
-        do_action(self::HOOK_NAME);
+    public static function getHookName() : string
+    {
+        return self::$PLUGIN_SLUG . 'admin-page';
+    }
+
+    public static function doAction() :void
+    {
+        do_action(self::getHookName());
     } 
 
-    public static function addAction( callable $callback ) {
-        add_action(self::HOOK_NAME, $callback);
+    public static function addAction( callable $callback ) :void
+    {
+        add_action(self::getHookName(), $callback);
     }
 };

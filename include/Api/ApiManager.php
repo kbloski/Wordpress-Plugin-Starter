@@ -3,9 +3,12 @@
 namespace Inc\Api;
 
 use Inc\Api\Rest\ExampleRestApi;
+use Inc\Config\Config;
 
 class ApiManager 
 {
+    use Config;
+
     public static function init(): void
     {
         // Init REST API endpoints
@@ -26,6 +29,6 @@ class ApiManager
 
     public static function getV1NamespaceApi()
     {
-        return "alguin/v1";
+        return self::$PLUGIN_SLUG . "/v1";
     }
 }

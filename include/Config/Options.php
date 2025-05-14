@@ -5,7 +5,7 @@ namespace Inc\Config;
 use InvalidArgumentException;
 
 class Options {
-    protected static string $option_name = 'alguin_plugin_options';
+    use Config;
 
     protected static array $defaults = [
         'api_key' => '',
@@ -17,6 +17,10 @@ class Options {
         'client_secret',
     ];
 
+    private static function getOptionsName() : string
+    {
+        return self::$PLUGIN_SLUG . "_plugin_options";
+    }
 
 
     /**
@@ -28,31 +32,24 @@ class Options {
         }
     }
 
-
-
-    public static function getOptionName(): string 
-    {
-        return self::$option_name;
-    }
-
     public static function get(string $key, $default = null) 
     {
         self::validateKey($key);
-        $all = get_option(self::$option_name, []);
+        $all = get_option(self::getOptionsName(), []);
         return $all[$key] ?? self::$defaults[$key] ?? $default;
     }
 
     public static function set(string $key, $value): void 
     {
         self::validateKey($key);
-        $options = get_option(self::$option_name, []);
+        $options = get_option(self::getOptionsName(), []);
         $options[$key] = $value;
-        update_option(self::$option_name, $options);
+        update_option(self::getOptionsName(), $options);
     }
 
     public static function all(): array 
     {
-        return array_merge(self::$defaults, get_option(self::$option_name, []));
+        return array_merge(self::$defaults, get_option(self::getOptionsName(), []));
     }
 
     public static function update(array $values): void 
@@ -61,9 +58,9 @@ class Options {
             self::validateKey($key);
         }
 
-        $current = get_option(self::$option_name, []);
+        $current = get_option(self::getOptionsName(), []);
         $merged = array_merge($current, $values);
-        update_option(self::$option_name, $merged);
+        update_option(self::getOptionsName(), $merged);
     }
 
 

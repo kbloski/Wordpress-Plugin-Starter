@@ -4,8 +4,8 @@ namespace Inc\Templates\Helpers;
 
 class HtmlElementCreator
 {
-    private const DATA_LOAD_INFO = 'data-load-info-id';
-    private const DATA_REACT_ID = 'data-react-id';
+    private const DATA_LOAD_INFO_PROP = 'data-load-info-id';
+    private const DATA_REACT_ID_PROP = 'data-react-id';
 
     private static function createUniqueDataLoadInfoId() : string
     {
@@ -38,7 +38,7 @@ class HtmlElementCreator
 
 
             window.addEventListener('load', () => {
-                const loadContainerInfo = document.querySelector('[<?php echo self::DATA_LOAD_INFO; ?>="<?php echo $loadInfoId; ?>"]');
+                const loadContainerInfo = document.querySelector('[<?php echo self::DATA_LOAD_INFO_PROP; ?>="<?php echo $loadInfoId; ?>"]');
                 if (!loadContainerInfo) return; 
 
                 fadeIn(loadContainerInfo);
@@ -63,13 +63,14 @@ class HtmlElementCreator
         return ob_get_clean();
     }
 
+
     public static function createDivWithReactId(string $dataReactId, ?string $customHtmlTemplate = null): string
     {
         $uniqueLoadInfoId = self::createUniqueDataLoadInfoId();
 
-        $code = "<div " . self::DATA_REACT_ID . "='" . htmlspecialchars($dataReactId, ENT_QUOTES, 'UTF-8') . "'>";
+        $code = "<div " . self::DATA_REACT_ID_PROP . "='" . htmlspecialchars($dataReactId, ENT_QUOTES, 'UTF-8') . "'>";
         $code .= $customHtmlTemplate ?? " 
-            <div style='text-align: center;' " . self::DATA_LOAD_INFO . "='" . $uniqueLoadInfoId . "'>
+            <div style='text-align: center;' " . self::DATA_LOAD_INFO_PROP . "='" . $uniqueLoadInfoId . "'>
                 Loading application component...
             </div>";
         $code .= self::elScript($uniqueLoadInfoId);

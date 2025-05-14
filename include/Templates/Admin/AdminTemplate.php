@@ -4,14 +4,15 @@ namespace Inc\Templates\Admin;
 
 use Inc\Hooks\AdminPageHook;
 use Inc\Templates\Helpers\HtmlElementCreator;
+use Inc\Config\Config;
 
 class AdminTemplate
 {
-    private const SLUG_PREFIX = "alguin-";
+    use Config;
     
     private static function createSlug( string $slug )
     {
-        return self::SLUG_PREFIX.$slug;
+        return self::$PLUGIN_SLUG.$slug;
     }
 
     private static function checkMenuPositions(){
@@ -29,8 +30,8 @@ class AdminTemplate
 
             // Title
             add_menu_page(
-                'Alguin Plugin',             // Page title
-                'Alguin Template 2025',      // Menu title
+                self::$PLUGIN_SLUG .' Plugin',             // Page title
+                self::$PLUGIN_SLUG,      // Menu title
                 'manage_options',            // Permissions
                 $mainPageSlug,               // Unique Slug Page
                 [self::class, "renderHomePage"],  // Callback page

@@ -3,12 +3,15 @@
 namespace Inc;
 
 use Inc\Api\ApiManager;
+use Inc\Config\Config;
 use Inc\Hooks\AdminPageHook;
 use Inc\Templates\React\ShortcodesReact;
 use Inc\Templates\Shortcodes\ShortcodesManager;
 
 class ScriptsManager 
 {
+    use Config;
+    
     public static function init()
     {
         
