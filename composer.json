@@ -1,5 +1,5 @@
 {
-    "name": "kamil/wp-plugin-starter",
+    "name": "wp-plug-starter/blonski",
     "description": "A WordPress plugin template that simplifies the plugin development process.",
     "type": "wordpress-plugin",
     "license": "GPL-3.0",

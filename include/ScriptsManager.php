@@ -26,11 +26,11 @@ class ScriptsManager
     {
         $asset_path = plugin_dir_url(dirname(__FILE__)) . 'build/';
         
-        wp_enqueue_script( self::$PLUGIN_SLUG.'handleReactApp', $asset_path . 'src/main.js', [], null, true );
-        wp_enqueue_style(  self::$PLUGIN_SLUG.'handleReactAppStyles', $asset_path . 'src/main.css', [], null );
+        wp_enqueue_script( self::$PLUGIN_SLUG . 'handleReactApp', $asset_path . 'src/main.js', [], null, true );
+        wp_enqueue_style(  self::$PLUGIN_SLUG . 'handleReactAppStyles', $asset_path . 'src/main.css', [], null );
 
         wp_localize_script(
-            'handleReactApp',   // Script handler
+            self::$PLUGIN_SLUG . 'handleReactApp',   // Script handler
             'pluginData',       // Provided variable name
             [
                 "config" => [

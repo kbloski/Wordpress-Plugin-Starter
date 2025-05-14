@@ -6,9 +6,10 @@
  * Version: 1.0.0
  * Author: Kamil Błoński 
  */
+
+
 if (!defined('ABSPATH')) exit;
 require_once(plugin_dir_path(__FILE__) . 'vendor/autoload.php');
-
 
 use Inc\Templates\Admin\AdminTemplate;
 use Inc\Api\ApiManager;
