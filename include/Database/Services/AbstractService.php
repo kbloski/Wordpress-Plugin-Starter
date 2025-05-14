@@ -2,7 +2,7 @@
 
 namespace Inc\Database\Services;
 
-abstract class AbstractService {
+abstract class AbstractService implements IAbstractService {
     protected $table;
     protected $wpdb;
 
@@ -44,7 +44,7 @@ abstract class AbstractService {
         );
     }
     
-    public function update($id, array $data) {
+    public function updateById($id, array $data) {
         $placeholders = $this->map_placeholders($data);
 
         return $this->wpdb->update(
@@ -56,7 +56,7 @@ abstract class AbstractService {
         );
     }
 
-    public function delete($id) {
+    public function deleteById($id) {
         return $this->wpdb->delete(
             $this->table,
             ['id' => $id],
