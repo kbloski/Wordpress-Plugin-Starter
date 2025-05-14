@@ -2,12 +2,18 @@
 namespace Inc\Templates\Shortcodes;
 
 use Inc\Database\Services\ExampleService;
+use Inc\Config\Config;
 
 class ExampleList {
-    public const SHORTCODE_NAME = "example-list";
+    use Config;
+
+    public static function getShortcodeName() : string 
+    {
+        return self::$PLUGIN_SLUG. '-example-list';
+    }
 
     public static function initShortcode() {
-        add_shortcode(self::SHORTCODE_NAME, [self::class, 'renderShortcode']);
+        add_shortcode(self::getShortcodeName(), [self::class, 'renderShortcode']);
     }
 
     public static function renderShortcode($atts = [], $content = null) {

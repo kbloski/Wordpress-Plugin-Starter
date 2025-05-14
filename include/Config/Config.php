@@ -3,5 +3,8 @@
 namespace Inc\Config;
 
 trait Config {
-    public static $PLUGIN_SLUG = "alguin";
+    // Admin panel menu name
+    public static $PLUGIN_NAME = 'Alguin Template';
+    public static $PLUGIN_SLUG = "alg";
+
 }

@@ -20,6 +20,13 @@ interface RootElementInterface {
  * _plug_dir_/include/templates/react/ShortcodesReact.php 
  */
 
+function getNameWithPluginPrefix( name : string )
+{
+   return pluginData.config.pluginPrefix + name;
+}
+
+
+
 const pageBlock : RootElementInterface[] =[
   { dataReactId: "admin-settings-page", element: <AdminSettings />},
   { dataReactId: "admin-home-page", element: <AdminHome />},
@@ -35,7 +42,7 @@ const shortcodes :  RootElementInterface[] =
     }
 
     switch(reactId){
-      case "hello-react":
+      case getNameWithPluginPrefix('-hello-react'):
         rootElement.element = <HelloReact />
         rootElement.isImplemented = true;
         break;

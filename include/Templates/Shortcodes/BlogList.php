@@ -1,12 +1,18 @@
 <?php
 namespace Inc\Templates\Shortcodes;
 use WP_Query;
+use Inc\Config\Config;
 
 class BlogList {
-    public const SHORTCODE_NAME = "blog-list";
+    use Config;
+
+    public static function getShortcodeName() : string 
+    {
+        return self::$PLUGIN_SLUG. '-blog-list';
+    }
 
     public static function initShortcode() {
-        add_shortcode(self::SHORTCODE_NAME, [self::class, 'renderShortcode']);
+        add_shortcode(self::getShortcodeName(), [self::class, 'renderShortcode']);
     }
 
     public static function renderShortcode() {

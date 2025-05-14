@@ -12,7 +12,7 @@ class AdminTemplate
     
     private static function createSlug( string $slug )
     {
-        return self::$PLUGIN_SLUG.$slug;
+        return self::$PLUGIN_SLUG.'-'.$slug;
     }
 
     private static function checkMenuPositions(){
@@ -31,7 +31,7 @@ class AdminTemplate
             // Title
             add_menu_page(
                 self::$PLUGIN_SLUG .' Plugin',             // Page title
-                self::$PLUGIN_SLUG,      // Menu title
+                self::$PLUGIN_NAME,      // Menu title
                 'manage_options',            // Permissions
                 $mainPageSlug,               // Unique Slug Page
                 [self::class, "renderHomePage"],  // Callback page

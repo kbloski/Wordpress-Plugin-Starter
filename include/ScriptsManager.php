@@ -11,7 +11,7 @@ use Inc\Templates\Shortcodes\ShortcodesManager;
 class ScriptsManager 
 {
     use Config;
-    
+
     public static function init()
     {
         
@@ -33,6 +33,9 @@ class ScriptsManager
             'handleReactApp',   // Script handler
             'pluginData',       // Provided variable name
             [
+                "config" => [
+                    'pluginPrefix' => self::$PLUGIN_SLUG,
+                ],
                 "admin" => [
                     "shortcodes" => [
                         "php" => ShortcodesManager::getShortcodesList(),

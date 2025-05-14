@@ -2,12 +2,19 @@
 namespace Inc\Templates\Shortcodes;
 
 use Inc\Database\Services\exampleService;
+use Inc\Config\Config;
 
 class ExampleForm {
-    public const SHORTCODE_NAME = "example-form";
+    use Config;
+    
+
+    public static function getShortcodeName() : string 
+    {
+        return self::$PLUGIN_SLUG. '-example-form';
+    }
 
     public static function initShortcode() {
-        add_shortcode(self::SHORTCODE_NAME, [self::class, 'renderShortcode']);
+        add_shortcode(self::getShortcodeName(), [self::class, 'renderShortcode']);
     }
 
     public static function renderShortcode($atts = [], $content = null) {

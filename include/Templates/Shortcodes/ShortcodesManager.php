@@ -9,13 +9,13 @@ class ShortcodesManager
     public static function init()
     {
         BlogList::initShortcode();
-        self::$shortcodesList[] = BlogList::SHORTCODE_NAME;
+        self::$shortcodesList[] = BlogList::getShortcodeName();
 
         ExampleForm::initShortcode();
-        self::$shortcodesList[] = ExampleForm::SHORTCODE_NAME;
+        self::$shortcodesList[] = ExampleForm::getShortcodeName();
 
         ExampleList::initShortcode();
-        self::$shortcodesList[] = ExampleList::SHORTCODE_NAME;
+        self::$shortcodesList[] = ExampleList::getShortcodeName();
     }
 
     public static function getShortcodesList()
