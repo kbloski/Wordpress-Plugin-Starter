@@ -11,6 +11,17 @@ export default defineConfig({
     },
   },
   build: {
+    lib: {
+      // Entry point of your application
+      entry: path.resolve(__dirname, 'src/main.tsx'),
+
+      // Name of the global variable exposed for builded app vite (e.g., window.__kb_global_object)
+      // This helps avoid conflicts with WordPress, which uses window.wp
+      name: '__kb_global_object',
+
+      // Optional: custom output filename
+      // fileName: () => 'src/main.js',   
+    },
     outDir: '../build',
     emptyOutDir: true,
     rollupOptions: {
@@ -18,9 +29,12 @@ export default defineConfig({
       output: {
         entryFileNames: 'src/main.js',
         chunkFileNames: 'src/main.js',
+        assetFileNames: 'src/main.css',
         // assetFileNames: 'src/[name][extname]',
-        assetFileNames: 'src/[name][extname]',
       }
     }
+  },
+  define: {
+  'process.env': {}
   }
 });
