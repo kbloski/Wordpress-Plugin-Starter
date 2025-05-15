@@ -3,9 +3,10 @@ declare const pluginData: {
       pluginPrefix : string;
     },
     api : {
-      restBaseUrl: string;
-      endpoints: Record<string, string>;
-      nonce: string;
+      rest : {
+        baseUrl: string;
+        endpoints: Record<string, string>;
+      }
     },
     admin : {
       shortcodes : {

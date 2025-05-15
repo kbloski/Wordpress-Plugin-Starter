@@ -21,26 +21,30 @@ function Documentation() {
         </ul>
         <h3>React Shortcodes</h3>
         <table className={style.reactShortcodesTable}>
-        <tr>
-            <th></th>
-            <th colSpan={2}>Implemented in</th>
-          </tr>
-          <tr>
-            <th>Shorcode</th>
-            <th>PHP</th>
-            <th>React</th>
-          </tr>
-          { !reactShortcodes.length ? "Empty array" : reactShortcodes.map( rootEl => <tr key={rootEl.dataReactId}>
-            <td>[{rootEl.dataReactId}] <Copy text={`[${rootEl.dataReactId}]`} /></td>
-            <td><i className="pi pi-check-circle"/></td>
-            <td>
-              { rootEl.isImplemented 
-                  ? <i className="pi pi-check-circle"/>
-                  : <i className="pi pi-times-circle"/>
-              }
-            </td>
-            
-          </tr>)}
+          <thead>
+            <tr>
+              <th></th>
+              <th colSpan={2}>Implemented in</th>
+            </tr>
+            <tr>
+              <th>Shorcode</th>
+              <th>PHP</th>
+              <th>React</th>
+            </tr>
+          </thead>
+          <tbody>
+            { !reactShortcodes.length ? "Empty array" : reactShortcodes.map( rootEl => <tr key={rootEl.dataReactId}>
+              <td>[{rootEl.dataReactId}] <Copy text={`[${rootEl.dataReactId}]`} /></td>
+              <td><i className="pi pi-check-circle"/></td>
+              <td>
+                { rootEl.isImplemented 
+                    ? <i className="pi pi-check-circle"/>
+                    : <i className="pi pi-times-circle"/>
+                }
+              </td>
+              
+            </tr>)}
+          </tbody>
         </table>
     </div>
   )

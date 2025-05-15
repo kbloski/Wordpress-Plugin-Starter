@@ -24,9 +24,9 @@ class ExampleRestApi
     /**
      * Get the full URL to this endpoint.
      */
-    public static function getFullUrl(): string
+    public static function getEndpoint(): string
     {
-        return rest_url(ApiManager::getV1NamespaceApi() . self::ROUTE_NAME);
+        return ApiManager::getV1NamespaceApi() . self::ROUTE_NAME;
     }
 
     /**
